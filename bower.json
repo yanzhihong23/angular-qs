@@ -3,16 +3,22 @@
   "version": "0.1.0",
   "description": "Angular Service for qs",
   "main": "index.js",
-  "authors": [
-    "Hom Yan"
-  ],
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/yanzhihong23/angular-qs"
+  },
+  "authors": {
+    "name" : "Hom Yan",
+    "email" : "yanzhihong23@qq.com"
+  },
   "license": "MIT",
   "keywords": [
     "angular",
     "qs"
   ],
-  "homepage": "",
-  "private": true,
+  "dependencies": {
+    "angular": ">=1.4.0"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
