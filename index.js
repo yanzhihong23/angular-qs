@@ -21,7 +21,7 @@
         RFC3986: 'RFC3986'
       };
     })
-    .service('utils', function(){
+    .service('_utils', function(){
       var self = this;
       var has = Object.prototype.hasOwnProperty;
 
@@ -204,7 +204,7 @@
         return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
       };
     })
-    .service('stringify', ['formats', 'utils', function(formats, utils){
+    .service('stringify', ['formats', '_utils', function(formats, _utils){
       var arrayPrefixGenerators = {
         brackets: function brackets(prefix) { // eslint-disable-line func-name-matching
           return prefix + '[]';
@@ -222,7 +222,7 @@
       var defaults = {
         delimiter: '&',
         encode: true,
-        encoder: utils.encode,
+        encoder: _utils.encode,
         encodeValuesOnly: false,
         serializeDate: function serializeDate(date) { // eslint-disable-line func-name-matching
           return toISO.call(date);
@@ -258,7 +258,7 @@
           obj = '';
         }
 
-        if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean' || utils.isBuffer(obj)) {
+        if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean' || _utils.isBuffer(obj)) {
           if (encoder) {
             var keyValue = encodeValuesOnly ? prefix : encoder(prefix);
             return [formatter(keyValue) + '=' + formatter(encoder(obj))];
@@ -408,14 +408,14 @@
         return keys.join(delimiter);
       };
     }])
-    .service('parse', ['utils', function(utils){
+    .service('parse', ['_utils', function(_utils){
       var has = Object.prototype.hasOwnProperty;
 
       var defaults = {
         allowDots: false,
         allowPrototypes: false,
         arrayLimit: 20,
-        decoder: utils.decode,
+        decoder: _utils.decode,
         delimiter: '&',
         depth: 5,
         parameterLimit: 1000,
@@ -542,7 +542,7 @@
           throw new TypeError('Decoder has to be a function.');
         }
 
-        options.delimiter = typeof options.delimiter === 'string' || utils.isRegExp(options.delimiter) ? options.delimiter : defaults.delimiter;
+        options.delimiter = typeof options.delimiter === 'string' || _utils.isRegExp(options.delimiter) ? options.delimiter : defaults.delimiter;
         options.depth = typeof options.depth === 'number' ? options.depth : defaults.depth;
         options.arrayLimit = typeof options.arrayLimit === 'number' ? options.arrayLimit : defaults.arrayLimit;
         options.parseArrays = options.parseArrays !== false;
@@ -566,10 +566,10 @@
         for (var i = 0; i < keys.length; ++i) {
           var key = keys[i];
           var newObj = parseKeys(key, tempObj[key], options);
-          obj = utils.merge(obj, newObj, options);
+          obj = _utils.merge(obj, newObj, options);
         }
 
-        return utils.compact(obj);
+        return _utils.compact(obj);
       };
     }])
     .service('qs', ['parse', 'stringify', function(parse, stringify){
