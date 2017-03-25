@@ -1,0 +1,23 @@
+{
+  "name": "angular-qs",
+  "version": "0.1.0",
+  "description": "Angular Service for qs",
+  "main": "index.js",
+  "authors": [
+    "Hom Yan"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "qs"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

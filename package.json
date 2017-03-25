@@ -1,0 +1,15 @@
+{
+  "name": "angular-qs",
+  "version": "0.1.0",
+  "description": "Angular Service for qs ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "qs"
+  ],
+  "author": "Hom Yan",
+  "license": "MIT"
+}
